@@ -232,8 +232,8 @@
 					</div>
 					<div class="col-sm-3">
 						<div class="single-fact text-center">
-							<h2 class="counter">10</h2>
-							<h5>Gelukkige Klanten</h5>
+							<h2 class="counter" id="klanten">10</h2>
+							<h5>Tevreden  Klanten</h5>
 						</div>
 					</div>
 					<div class="col-sm-3">
@@ -656,5 +656,27 @@
         <script src="js/slick.min.js"></script>
         <script src="js/plugins.js"></script>
         <script src="js/main.js"></script>
+	<script>
+		function readTextFile(file)
+		{
+		    var rawFile = new XMLHttpRequest();
+		    rawFile.open("GET", file, false);
+		    rawFile.onreadystatechange = function ()
+		    {
+			if(rawFile.readyState === 4)
+			{
+			    if(rawFile.status === 200 || rawFile.status == 0)
+			    {
+				var allText = rawFile.responseText;
+				alert(allText);
+			    }
+			}
+		    }
+		    rawFile.send(null);
+		}
+		
+		var klanten = readTextFile("klanten.txt");
+		document.getElementById("klanten").innerHTML = klanten;
+	</script>
     </body>
 </html>
